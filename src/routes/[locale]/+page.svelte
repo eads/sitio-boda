@@ -1,6 +1,11 @@
 <script>
+  import wallPhoto from '$lib/assets/van-and-david-wall.jpg?w=400;800;1200&format=webp;avif&as=srcset';
+  import wallPhotoSimple from '$lib/assets/van-and-david-wall.jpg';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
+
+  console.log(wallPhoto, 'wallPhoto');
+  console.log(wallPhotoSimple, 'wallPhotoSimple');
 
   export let data;
   const { copyStrings } = data;
@@ -48,7 +53,8 @@
     </button>
   </div>
 
-  <div id="content" class="flex items-center justify-between mt-4 lg:items-start">
-    <p>Hello world.</p>
+  <div id="content">
+    <img srcset={wallPhoto} sizes="(max-width: 800px) 100vw, 800px" alt="Description" />
+    <img src={wallPhotoSimple} alt="An localized alt text" class="hidden" />
   </div>
 </div>
