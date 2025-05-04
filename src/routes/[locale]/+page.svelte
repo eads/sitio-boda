@@ -1,4 +1,7 @@
 <script>
+  /* --- font imports ---------------------------------------------------- */
+  import "@fontsource/dancing-script"; // Imports the default weight (400)
+
   /* --- image imports ---------------------------------------------------- */
   import wallPhoto from '$lib/assets/van-and-david-wall.jpg?grayscale&w=1440;2880&aspect=16:5&fit=cover&position=entropy&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
   import gazingPhoto from '$lib/assets/van-and-david-gazing.jpg?w=1440;2880&aspect=16:5&fit=cover&position=center&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
@@ -53,20 +56,20 @@
 {#each heroSections as s}
   <!-- full‑width hero image -->
   <section id={s.id}
-           class="relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw]
+           class="hero-wrapper relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw]
                   h-[70vh] sm:h-[90vh] overflow-hidden">
     <img srcset={s.photo} sizes="100vw" alt={s.alt}
          class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
     <div class="absolute inset-0 flex items-center justify-center">
-      <h2 class="text-white text-4xl sm:text-6xl font-bold drop-shadow-xl">
+      <h1 class="text-white text-6xl md:text-8xl font-bold drop-shadow-xl">
         {copyStrings[s.key][locale]}
-      </h2>
+      </h1>
     </div>
   </section>
 
   <!-- descriptive markdown (larger type) -->
   <div class="mx-auto max-w-screen-lg px-4">
-    <div class="hero-more prose prose-xl md:prose-2xl mx-auto py-12" tabindex="-1">
+    <div class="hero-more prose prose-2xl md:prose-3xl mx-auto py-12" tabindex="-1">
       {@html copyStrings[s.moreKey][locale]}
     </div>
   </div>
@@ -75,9 +78,9 @@
 <!-- ───────────────────────── dresscode & extra info ──────────────────── -->
 <div class="mx-auto max-w-screen-lg px-4 space-y-16">
   <!-- dress code -->
-  <section id="dresscode" class="space-y-8">
-    <h2 class="text-3xl font-bold text-center">{copyStrings['dresscode'][locale]}</h2>
-    <div class="hero-more prose prose-xl md:prose-2xl mx-auto">
+  <section id="dresscode" class="hero-more space-y-8">
+    <h1>{copyStrings['dresscode'][locale]}</h1>
+    <div class="prose prose-xl md:prose-2xl mx-auto">
       {@html copyStrings['dresscodeMas'][locale]}
     </div>
   </section>
@@ -89,11 +92,24 @@
 </div>
 
 <style>
+  :global(header h1) {
+    font-family: 'Dancing Script', cursive;
+  }
+
+  :global(.hero-wrapper h1) {
+    font-family: 'Dancing Script', cursive;
+  }
   /* enlarge basic paragraph/link styling for hero‑more sections */
   :global(.hero-more p) {
     @apply mb-6 text-lg sm:text-xl leading-relaxed;
   }
   :global(.hero-more a) {
     @apply underline text-blue-700 hover:text-blue-900 transition-colors;
+  }
+  :global(.hero-more h1) {
+    @apply text-2xl md:text-4xl font-bold mb-6;
+  }
+  :global(.hero-more h2) {
+    @apply text-lg md:text-2xl font-bold mb-6;
   }
 </style>

@@ -8,8 +8,14 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/allura':
+        specifier: ^5.2.5
+        version: 5.2.5
       '@fontsource/arvo':
         specifier: ^5.0.19
+        version: 5.2.5
+      '@fontsource/dancing-script':
+        specifier: ^5.2.5
         version: 5.2.5
       aws-cdk-lib:
         specifier: ^2.171.1
@@ -939,8 +945,14 @@ packages:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
 
+  '@fontsource/allura@5.2.5':
+    resolution: {integrity: sha512-X1T876+BXXyFmfJ9zjYk5rO+A1X4XIw6mmiXauhMJaKpqM++K1X0YuS4m82jWDKCdBxckIWy3hhJWvBmNzIHNw==}
+
   '@fontsource/arvo@5.2.5':
     resolution: {integrity: sha512-jMoy5qC85ntOr6KGqUIBKqB1/71YnNnSoIUloomx6KabseJKp2pQfc+zQdWe8Bdwk8xmya9Co+NF4mwxk67P5A==}
+
+  '@fontsource/dancing-script@5.2.5':
+    resolution: {integrity: sha512-d1+KmeXJ04A9a7nBPpZ7gntJFnKwIRe2EkTcfs8cfH21qgY0B0cRioK+Bmozp5ViSWmm+uq7tRzhmlxRonDUZQ==}
 
   '@graphql-tools/executor@0.0.18':
     resolution: {integrity: sha512-xZC0C+/npXoSHBB5bsJdwxDLgtl1Gu4fL9J2TPQmXoZC3L2N506KJoppf9LgWdHU/xK04luJrhP6WjhfkIN0pQ==}
@@ -7471,7 +7483,11 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
+  '@fontsource/allura@5.2.5': {}
+
   '@fontsource/arvo@5.2.5': {}
+
+  '@fontsource/dancing-script@5.2.5': {}
 
   '@graphql-tools/executor@0.0.18(graphql@16.11.0)':
     dependencies:
