@@ -37,20 +37,29 @@
   }
 </script>
 
-<!-- ───────────────────────── header + language toggle ────────────────── -->
-<header class="mx-auto max-w-screen-lg px-4 pt-8 text-center space-y-4 scroll-smooth">
-  <h1 class="text-4xl font-extrabold tracking-tight">{copyStrings['titulo'][locale]}</h1>
-  <div class="inline-flex gap-2 text-sm">
-    <button
-      on:click={() => switchLanguage('en')}
-      class="px-3 py-1 rounded border transition-colors
-             {locale === 'en' ? 'border-white bg-zinc-700 text-white' : 'border-zinc-700'}">EN</button>
-    <button
-      on:click={() => switchLanguage('es')}
-      class="px-3 py-1 rounded border transition-colors
-             {locale === 'es' ? 'border-white bg-zinc-700 text-white' : 'border-zinc-700'}">ES</button>
+<!-- ───────────────────────── sticky header/nav ───────────────────────── -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+  <div class="max-w-screen-lg mx-auto px-4 h-16 flex items-center justify-between">
+    <!-- left: title as link to top -->
+    <h1><a href="#bienvenidos" class="text-2xl md:text-4xl font-extrabold tracking-tight hover:opacity-80 transition-opacity">
+      {copyStrings['titulo'][locale]}
+    </a></h1>
+
+    <!-- right: info link + language buttons -->
+    <nav class="flex items-center gap-2 text-sm">
+      <a href="#informacion" class="px-2 py-1 hover:underline">{copyStrings['informationNavLabel'][locale]}</a>
+      <button
+        on:click={() => switchLanguage('en')}
+        class="px-2 py-1 rounded border transition-colors
+               {locale === 'en' ? 'border-white bg-zinc-700 text-white' : 'border-zinc-700'}">EN</button>
+      <button
+        on:click={() => switchLanguage('es')}
+        class="px-2 py-1 rounded border transition-colors
+               {locale === 'es' ? 'border-white bg-zinc-700 text-white' : 'border-zinc-700'}">ES</button>
+    </nav>
   </div>
 </header>
+
 
 <!-- ───────────────────────── hero blocks + descriptive content ───────── -->
 {#each heroSections as s}
@@ -90,6 +99,8 @@
     {@html copyStrings['informacion'][locale]}
   </section>
 </div>
+
+
 
 <style>
   :global(header h1) {
