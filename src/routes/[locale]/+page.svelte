@@ -1,6 +1,6 @@
 <script>
   /* --- font imports ---------------------------------------------------- */
-  import "@fontsource/dancing-script"; // Imports the default weight (400)
+  import "@fontsource/playfair-display"; // Imports the default weight (400)
 
   /* --- image imports ---------------------------------------------------- */
   import wallPhoto from '$lib/assets/van-and-david-wall.jpg?grayscale&w=1440;2880&aspect=16:5&fit=cover&position=entropy&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
@@ -41,7 +41,7 @@
 <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
   <div class="max-w-screen-lg mx-auto px-4 h-16 flex items-center justify-between">
     <!-- left: title as link to top -->
-    <h1><a href="#bienvenidos" class="text-2xl md:text-4xl font-extrabold tracking-tight hover:opacity-80 transition-opacity">
+    <h1><a href="#bienvenidos" class="text-lg md:text-2xl font-extrabold tracking-tight hover:opacity-80 transition-opacity">
       {copyStrings['titulo'][locale]}
     </a></h1>
 
@@ -103,12 +103,16 @@
 
 
 <style>
+  :global(body) {
+    font-family: "Playfair Display", serif;
+  }
+
   :global(header h1) {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Drakors', cursive;
   }
 
   :global(.hero-wrapper h1) {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Drakors', cursive;
   }
   /* enlarge basic paragraph/link styling for hero‑more sections */
   :global(.hero-more p) {

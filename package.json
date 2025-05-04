@@ -35,9 +35,11 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource-variable/playfair-display": "^5.2.5",
 		"@fontsource/allura": "^5.2.5",
 		"@fontsource/arvo": "^5.0.19",
 		"@fontsource/dancing-script": "^5.2.5",
+		"@fontsource/playfair-display": "^5.2.5",
 		"aws-cdk-lib": "^2.171.1",
 		"constructs": "^10.4.2",
 		"flowbite-svelte-icons": "^1.6.1",
