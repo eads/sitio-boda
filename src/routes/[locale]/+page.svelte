@@ -4,7 +4,7 @@
 
   /* --- image imports ---------------------------------------------------- */
   import wallPhoto from '$lib/assets/van-and-david-wall.jpg?grayscale&w=1440;2880&aspect=16:5&fit=cover&position=entropy&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
-  import gazingPhoto from '$lib/assets/van-and-david-gazing.jpg?w=1440;2880&aspect=16:5&fit=cover&position=center&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
+  import gazingPhoto from '$lib/assets/van-and-david-gazing.jpg?w=1440;2880&aspect=16:9&fit=cover&position=attention&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
   import handsPhoto from '$lib/assets/van-and-david-hands.jpg?w=1440;2880&aspect=16:11&fit=cover&position=center&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
 
   /* --- svelte‑kit + localisation  --------------------------------------- */
@@ -94,13 +94,24 @@
     </div>
   </section>
 
-  <!-- información libre -->
+  <!-- información -->
   <section id="informacion" class="hero-more prose prose-xl md:prose-2xl mx-auto">
     {@html copyStrings['informacion'][locale]}
   </section>
+
+  <section id="qr-codes" class="mt-32">
+    <h1 class="text-2xl md:text-4xl font-bold mb-6">{copyStrings['qrCodes'][locale]}</h1>
+    <div>
+      <p><code>https://boda.grupovisual.org/?utm_source=wedding-invite</code></p>
+      <img src="https://boda.grupovisual.org/qr-invitation.png" class="w-1/5"/>
+    </div>
+
+    <div>
+      <p><code>https://boda.grupovisual.org/</code></p>
+      <img src="https://boda.grupovisual.org/qr-root.png" class="w-1/5"/>
+    </div>
+  </section>
 </div>
-
-
 
 <style>
   :global(body) {
