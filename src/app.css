@@ -1,12 +1,1 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@plugin "@tailwindcss/typography";
-
-@font-face {
-  font-family: 'Drakors';
-  src: url('/fonts/Drakors-Regular.woff2') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+@import "tailwindcss";

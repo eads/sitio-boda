@@ -3,9 +3,9 @@
   import "@fontsource/playfair-display"; // Imports the default weight (400)
 
   /* --- image imports ---------------------------------------------------- */
-  import wallPhoto from '$lib/assets/van-and-david-wall.jpg?grayscale&w=1440;2880&aspect=16:5&fit=cover&position=entropy&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
-  import gazingPhoto from '$lib/assets/van-and-david-gazing.jpg?w=1440;2880&aspect=16:9&fit=cover&position=attention&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
-  import handsPhoto from '$lib/assets/van-and-david-hands.jpg?w=1440;2880&aspect=16:11&fit=cover&position=center&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
+  import wallPhoto from '$lib/assets/van-and-david-wall.jpg?grayscale&brightness=0.8&w=1800;2880&aspect=16:8fit=cover&position=entropy&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
+  import gazingPhoto from '$lib/assets/van-and-david-gazing.jpg?w=1800;2880&aspect=16:15&fit=cover&position=center&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
+  import handsPhoto from '$lib/assets/van-and-david-hands.jpg?w=1800;2880&aspect=16:13&fit=cover&position=center&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
 
   /* --- svelte‑kit + localisation  --------------------------------------- */
   import { goto } from '$app/navigation';
@@ -39,22 +39,22 @@
 
 <!-- ───────────────────────── sticky header/nav ───────────────────────── -->
 <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
-  <div class="max-w-screen-lg mx-auto px-4 h-16 flex items-center justify-between">
+  <div class="max-w-screen-lg mx-auto px-4 h-14 flex items-center justify-between">
     <!-- left: title as link to top -->
-    <h1><a href="#bienvenidos" class="text-lg md:text-2xl tracking-tight hover:opacity-80 transition-opacity">
+    <h1><a href="#bienvenidos" class="text-2xl md:text-3xl tracking-tight hover:opacity-80 transition-opacity">
       {copyStrings['titulo'][locale]}
     </a></h1>
 
     <!-- right: info link + language buttons -->
-    <nav class="flex items-center gap-2 text-sm">
-      <a href="#informacion" class="px-2 py-1 hover:underline">{copyStrings['informationNavLabel'][locale]}</a>
+    <nav class="flex items-center gap-1 text-xs md:text-sm">
+      <a href="#informacion" class="text-sm mr-2 md:mr-6 py-1 hover:underline">ⓘ {copyStrings['informationNavLabel'][locale]}</a>
       <button
         on:click={() => switchLanguage('en')}
-        class="px-2 py-1 rounded border transition-colors
+        class="px-2 py-2 rounded border transition-colors
                {locale === 'en' ? 'border-white bg-zinc-700 text-white' : 'border-zinc-700'}">EN</button>
       <button
         on:click={() => switchLanguage('es')}
-        class="px-2 py-1 rounded border transition-colors
+        class="px-2 py-2 rounded border transition-colors
                {locale === 'es' ? 'border-white bg-zinc-700 text-white' : 'border-zinc-700'}">ES</button>
     </nav>
   </div>
@@ -70,7 +70,7 @@
     <img srcset={s.photo} sizes="100vw" alt={s.alt}
          class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
     <div class="absolute inset-0 flex items-center justify-center">
-      <h1 class="text-white text-4xl md:text-7xl drop-shadow-xl text-center">
+      <h1 class="text-white text-5xl md:text-7xl text-shadow-black text-shadow-lg/30 text-center">
         {copyStrings[s.key][locale]}
       </h1>
     </div>
@@ -78,7 +78,7 @@
 
   <!-- descriptive markdown (larger type) -->
   <div class="mx-auto max-w-screen-lg px-4">
-    <div class="hero-more prose prose-2xl md:prose-3xl mx-auto py-12" tabindex="-1">
+    <div class="hero-more text-lg md:text-2xl mx-auto py-12" tabindex="-1">
       {@html copyStrings[s.moreKey][locale]}
     </div>
   </div>
@@ -89,18 +89,18 @@
   <!-- dress code -->
   <section id="dresscode" class="hero-more space-y-8">
     <h1>{copyStrings['dresscode'][locale]}</h1>
-    <div class="prose prose-2xl md:prose-3xl mx-auto">
+    <div class="text-lg md:text-2xl mx-auto">
       {@html copyStrings['dresscodeMas'][locale]}
     </div>
   </section>
 
   <!-- información -->
-  <section id="informacion" class="hero-more prose prose-2xl md:prose-3xl mx-auto">
+  <section id="informacion" class="hero-more text-lg md:text-2xl mx-auto">
     {@html copyStrings['informacion'][locale]}
   </section>
 
   <section id="qr-codes" class="mt-32">
-    <h1 class="text-2xl md:text-4xl font-bold mb-6">{copyStrings['qrCodes'][locale]}</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">{copyStrings['qrCodes'][locale]}</h1>
     <div>
       <p><code>https://boda.grupovisual.org/?utm_source=wedding-invite</code></p>
       <img src="https://boda.grupovisual.org/qr-invitation.png" class="w-2/5 md:w-1/5"/>
@@ -114,28 +114,29 @@
 </div>
 
 <style>
+  @reference "../../app.css";
+
+
   :global(body) {
     font-family: "Playfair Display", serif;
   }
-
   :global(header h1) {
     font-family: 'Drakors', cursive;
   }
-
   :global(.hero-wrapper h1) {
     font-family: 'Drakors', cursive;
   }
   /* enlarge basic paragraph/link styling for hero‑more sections */
   :global(.hero-more p) {
-    @apply mb-6 text-lg sm:text-xl leading-relaxed;
+    @apply mb-6 text-xl md:text-2xl leading-relaxed;
   }
   :global(.hero-more a) {
     @apply underline text-blue-700 hover:text-blue-900 transition-colors;
   }
   :global(.hero-more h1) {
-    @apply text-2xl md:text-4xl font-bold mb-6;
+    @apply text-4xl md:text-5xl font-bold mt-24 mb-6;
   }
   :global(.hero-more h2) {
-    @apply text-lg md:text-2xl font-bold mb-6;
+    @apply text-2xl md:text-3xl font-bold mt-12 mb-6;
   }
 </style>
