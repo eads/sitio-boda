@@ -41,7 +41,7 @@
 <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
   <div class="max-w-screen-lg mx-auto px-4 h-16 flex items-center justify-between">
     <!-- left: title as link to top -->
-    <h1><a href="#bienvenidos" class="text-lg md:text-2xl font-extrabold tracking-tight hover:opacity-80 transition-opacity">
+    <h1><a href="#bienvenidos" class="text-lg md:text-2xl tracking-tight hover:opacity-80 transition-opacity">
       {copyStrings['titulo'][locale]}
     </a></h1>
 
@@ -70,7 +70,7 @@
     <img srcset={s.photo} sizes="100vw" alt={s.alt}
          class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
     <div class="absolute inset-0 flex items-center justify-center">
-      <h1 class="text-white text-6xl md:text-8xl font-bold drop-shadow-xl">
+      <h1 class="text-white text-4xl md:text-7xl drop-shadow-xl text-center">
         {copyStrings[s.key][locale]}
       </h1>
     </div>
@@ -89,13 +89,13 @@
   <!-- dress code -->
   <section id="dresscode" class="hero-more space-y-8">
     <h1>{copyStrings['dresscode'][locale]}</h1>
-    <div class="prose prose-xl md:prose-2xl mx-auto">
+    <div class="prose prose-2xl md:prose-3xl mx-auto">
       {@html copyStrings['dresscodeMas'][locale]}
     </div>
   </section>
 
   <!-- información -->
-  <section id="informacion" class="hero-more prose prose-xl md:prose-2xl mx-auto">
+  <section id="informacion" class="hero-more prose prose-2xl md:prose-3xl mx-auto">
     {@html copyStrings['informacion'][locale]}
   </section>
 
@@ -103,12 +103,12 @@
     <h1 class="text-2xl md:text-4xl font-bold mb-6">{copyStrings['qrCodes'][locale]}</h1>
     <div>
       <p><code>https://boda.grupovisual.org/?utm_source=wedding-invite</code></p>
-      <img src="https://boda.grupovisual.org/qr-invitation.png" class="w-1/5"/>
+      <img src="https://boda.grupovisual.org/qr-invitation.png" class="w-2/5 md:w-1/5"/>
     </div>
 
     <div>
       <p><code>https://boda.grupovisual.org/</code></p>
-      <img src="https://boda.grupovisual.org/qr-root.png" class="w-1/5"/>
+      <img src="https://boda.grupovisual.org/qr-root.png" class="w-2/5 md:w-1/5"/>
     </div>
   </section>
 </div>
