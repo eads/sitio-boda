@@ -3,9 +3,16 @@
   import "@fontsource/playfair-display"; // Imports the default weight (400)
 
   /* --- image imports ---------------------------------------------------- */
-  import wallPhoto from '$lib/assets/van-and-david-wall.jpg?grayscale&brightness=0.8&w=1800;2880&aspect=16:8fit=cover&position=entropy&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
+  import logoImage from '$lib/assets/logo.png';
+  import wallPhoto from '$lib/assets/van-and-david-wall.jpg?grayscale&brightness=.925&contrast=1.25&w=1800;2880&aspect=16:8fit=cover&position=entropy&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
   import gazingPhoto from '$lib/assets/van-and-david-gazing.jpg?w=1800;2880&aspect=16:15&fit=cover&position=center&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
   import handsPhoto from '$lib/assets/van-and-david-hands.jpg?w=1800;2880&aspect=16:13&fit=cover&position=center&format=webp&quality=90&effort=max&withoutEnlargement&as=srcset';
+
+  const dresscodePictures = import.meta.glob('$lib/assets/dresscode/*.{jpg,webp}', {
+    query: { format: 'webp;avif', w: '200;400', aspect: '1:2', cover: 'fit', as: 'srcset' },
+    import: 'default',
+    eager: true
+  });
 
   /* --- svelte‑kit + localisation  --------------------------------------- */
   import { goto } from '$app/navigation';
@@ -39,11 +46,14 @@
 
 <!-- ───────────────────────── sticky header/nav ───────────────────────── -->
 <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
-  <div class="max-w-screen-lg mx-auto px-4 h-14 flex items-center justify-between">
+  <div class="max-w-screen-lg mx-auto px-2 h-14 flex items-center justify-between">
     <!-- left: title as link to top -->
-    <h1><a href="#bienvenidos" class="text-2xl md:text-3xl tracking-tight hover:opacity-80 transition-opacity">
-      {copyStrings['titulo'][locale]}
-    </a></h1>
+    <h1>
+      <a href="#bienvenidos" class="flex items-center text-2xl md:text-3xl hover:opacity-80 transition-opacity">
+        <img class="h-6 md:h-9" src={logoImage} alt="D&D imagen" />
+        <span class="ml-2">{copyStrings['titulo'][locale]}</span>
+      </a>
+    </h1>
 
     <!-- right: info link + language buttons -->
     <nav class="flex items-center gap-1 text-xs md:text-sm">
@@ -78,7 +88,7 @@
 
   <!-- descriptive markdown (larger type) -->
   <div class="mx-auto max-w-screen-lg px-4">
-    <div class="hero-more text-lg md:text-2xl mx-auto py-12" tabindex="-1">
+    <div class="hero-more text-center text-lg md:text-2xl mx-auto py-12" tabindex="-1">
       {@html copyStrings[s.moreKey][locale]}
     </div>
   </div>
@@ -92,51 +102,23 @@
     <div class="text-lg md:text-2xl mx-auto">
       {@html copyStrings['dresscodeMas'][locale]}
     </div>
+    <div class="grid grid-cols-4 gap-4">
+      {#each Object.values(dresscodePictures) as srcset}
+        <div class="w-full md:aspect-[1/2] overflow-hidden rounded-xl bg-gray-100">
+          <img
+            srcset={srcset}
+            sizes="(min-width: 768px) 16.6vw, (min-width: 640px) 25vw, 33vw"
+            alt="Dresscode image"
+            loading="lazy"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      {/each}
+    </div>
   </section>
 
   <!-- información -->
-  <section id="informacion" class="hero-more text-lg md:text-2xl mx-auto">
+  <section id="informacion" class="hero-more text-lg md:text-2xl mx-auto pt-2">
     {@html copyStrings['informacion'][locale]}
   </section>
-
-  <section id="qr-codes" class="mt-32">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6">{copyStrings['qrCodes'][locale]}</h1>
-    <div>
-      <p><code>https://boda.grupovisual.org/?utm_source=wedding-invite</code></p>
-      <img src="https://boda.grupovisual.org/qr-invitation.png" class="w-2/5 md:w-1/5"/>
-    </div>
-
-    <div>
-      <p><code>https://boda.grupovisual.org/</code></p>
-      <img src="https://boda.grupovisual.org/qr-root.png" class="w-2/5 md:w-1/5"/>
-    </div>
-  </section>
 </div>
-
-<style>
-  @reference "../../app.css";
-
-
-  :global(body) {
-    font-family: "Playfair Display", serif;
-  }
-  :global(header h1) {
-    font-family: 'Drakors', cursive;
-  }
-  :global(.hero-wrapper h1) {
-    font-family: 'Drakors', cursive;
-  }
-  /* enlarge basic paragraph/link styling for hero‑more sections */
-  :global(.hero-more p) {
-    @apply mb-6 text-xl md:text-2xl leading-relaxed;
-  }
-  :global(.hero-more a) {
-    @apply underline text-blue-700 hover:text-blue-900 transition-colors;
-  }
-  :global(.hero-more h1) {
-    @apply text-4xl md:text-5xl font-bold mt-24 mb-6;
-  }
-  :global(.hero-more h2) {
-    @apply text-2xl md:text-3xl font-bold mt-12 mb-6;
-  }
-</style>
